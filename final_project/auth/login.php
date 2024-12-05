@@ -3,8 +3,9 @@ session_start();
 require_once '../service/database.php'; // Pastikan path benar
 
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    // Ambil input dengan sanitasi
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
     // Pastikan koneksi ke database berhasil
     if ($conn->connect_error) {
@@ -22,8 +23,10 @@ if (isset($_POST['login'])) {
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
+
             // Verifikasi password menggunakan password_verify()
             if (password_verify($password, $row['password'])) {
+                // Login berhasil, buat sesi
                 $_SESSION['username'] = $username;
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['is_logged_in'] = TRUE;
@@ -32,10 +35,10 @@ if (isset($_POST['login'])) {
                 header('Location: ../index.php');
                 exit();
             } else {
-                $error = "Username atau password salah";
+                $error = "Password salah. Silakan coba lagi.";
             }
         } else {
-            $error = "Username atau password salah";
+            $error = "Username tidak ditemukan. Silakan coba lagi.";
         }
 
         $stmt->close();

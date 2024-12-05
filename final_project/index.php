@@ -83,44 +83,37 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">Sekolah Cerdas</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="auth/login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="auth/register.php">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="auth/pendaftaran_siswa.php">Lihat Pendaftaran</a>
-                </li>
-                <?php if ($is_admin): ?>
-                <li class="nav-item">
-                        <a class="nav-link" href="admin/dashboard.php">Admin Dashboard</a>
-                    </li>
-                <?php endif; ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="auth/logout.php">Logout</a>
-                </li>
-                <?php if ($is_admin): ?>
+        <div class="container">
+            <a class="navbar-brand" href="#">Sekolah Cerdas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/dashboard.php">Admin Dashboard</a>
+                        <a class="nav-link" href="auth/login.php">Login Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/manage_students.php">Kelola Siswa</a>
+                        <a class="nav-link" href="admin/dashboard.php">dashboard admin (admin only)</a>
                     </li>
-                <?php endif; ?>
-
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth/pendaftaran_siswa.php">Lihat Pendaftaran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth/logout.php">Logout Admin</a>
+                    </li>
+                    <?php if ($is_admin): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin/dashboard.php">Admin Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin/manage_students.php">Kelola Siswa</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
 
     <!-- Form Section -->
     <div class="container">
@@ -176,6 +169,7 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Sekolah Cerdas. All Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Contact</a></p>
+        <p>Cara mendaftarkan siswa Anda: Admin dapat login melalui halaman <a href="auth/login.php">Login Admin</a> untuk mengelola data siswa. Pengguna lainnya tidak perlu login dan dapat langsung mengisi formulir di atas.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
